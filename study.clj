@@ -1,10 +1,18 @@
-(defn destruc [[{rate :rate} grams]]
-    "test function for destruction study"
-    (reduce * [rate grams]))
+(defn merge-one-pair [[{name :name, rate :rate, group :group} units]]
+    "returns total calories for n units of the foodstuff"
+    (let [cals (reduce * [rate units]), pair [name cals]]
+        pair))
+
+(defn merge-many-pairs [& more]
+    "returns total calories for many foodstuff rations"
+    (map merge-one-pair more))
 
 (defn logger [& more]
-    "takes n data pairs and maps destruc to each"
-    (map destruc more))
+    "creates user-friendly output"
+    (let [total (reduce + (map last more)), foodstuffs (map merge-one-pair more)]
+        (println "\n" 
+            "foodstuffs:" foodstuffs "\n" 
+            "total:" total "cals." "\n")))
 
 (def oj
     {:name "Kirkland orange juice"
