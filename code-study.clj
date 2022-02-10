@@ -1,6 +1,8 @@
+;;I was trying to add an automatic timestamping
 (import java.util.Date)
 (defn date [] (str (new java.util.Date)))
 
+;;I was trying to improve the abstractions with then recent knowledge
 (defn merge-one-pair [[{name :name, rate :rate, group :group} units]]
     "returns total calories for n units of the foodstuff"
     (let [cals (reduce * [rate units]), pair [name cals]]
@@ -18,6 +20,7 @@
             (date) "--" total "cals." "--" foodstuffs  
             "\n")))
 
+;;I was trying to improve the data structres I was using and add categorization info
 (def oj
     {:name "Kirkland orange juice"
     :rate 0.5
